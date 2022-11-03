@@ -45,11 +45,22 @@ def random_polar_triangle() -> Point:
     return r * np.cos(theta), r * np.sin(theta)
 
 
+def random_polar_max() -> Point:
+    """See https://youtu.be/4y_nmpv-9lI?t=996"""
+    theta = random() * 2 * np.pi
+    r = random()
+    r2 = random()
+    if r2 >= r:
+        r = r2
+    return r * np.cos(theta), r * np.sin(theta)
+
+
 DISTRIBUTIONS = {
     "cartesian": random_cartesian,
     "polar": random_polar,
     "inverse": random_polar_sqrt,
     "triangle": random_polar_triangle,
+    "max": random_polar_max,
 }
 
 
