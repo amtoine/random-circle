@@ -13,6 +13,7 @@ Distribution = Callable[None, Point]
 
 
 def random_cartesian() -> Point:
+    """See https://youtu.be/4y_nmpv-9lI?t=142"""
     while True:
         x = random() * 2 - 1
         y = random() * 2 - 1
@@ -21,14 +22,23 @@ def random_cartesian() -> Point:
 
 
 def random_polar() -> Point:
+    """See https://youtu.be/4y_nmpv-9lI?t=258"""
     theta = random() * 2 * np.pi
     r = random()
+    return r * np.cos(theta), r * np.sin(theta)
+
+
+def random_polar_sqrt() -> Point:
+    """See https://youtu.be/4y_nmpv-9lI?t=602"""
+    theta = random() * 2 * np.pi
+    r = np.sqrt(random())
     return r * np.cos(theta), r * np.sin(theta)
 
 
 DISTRIBUTIONS = {
     "cartesian": random_cartesian,
     "polar": random_polar,
+    "inverse": random_polar_sqrt,
 }
 
 
