@@ -35,10 +35,20 @@ def random_polar_sqrt() -> Point:
     return r * np.cos(theta), r * np.sin(theta)
 
 
+def random_polar_triangle() -> Point:
+    """See https://youtu.be/4y_nmpv-9lI?t=728"""
+    theta = random() * 2 * np.pi
+    r = random() + random()  # sum the coordinates in the triangle
+    if r >= 1:  # reflect the half triangle
+        r = 2 - r
+    return r * np.cos(theta), r * np.sin(theta)
+
+
 DISTRIBUTIONS = {
     "cartesian": random_cartesian,
     "polar": random_polar,
     "inverse": random_polar_sqrt,
+    "triangle": random_polar_triangle,
 }
 
 
