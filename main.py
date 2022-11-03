@@ -73,7 +73,7 @@ def plot_distribution(
     points = np.array(
         [distribution() for _ in trange(n, desc="Sampling points")]
     ).transpose()
-    plt.scatter(*points, c=color)
+    plt.scatter(*points, c=color, s=1)
 
 
 def plot_circle(
