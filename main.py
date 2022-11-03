@@ -4,6 +4,7 @@ from typing import Callable, Tuple
 
 import argparse
 from random import random
+from tqdm import trange
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -58,7 +59,9 @@ def plot_distribution(
     n: int = 3141,
     color: str = "#008888"
 ) -> None:
-    points = np.array([distribution() for _ in range(n)]).transpose()
+    points = np.array(
+        [distribution() for _ in trange(n, desc="Sampling points")]
+    ).transpose()
     plt.scatter(*points, c=color)
 
 
