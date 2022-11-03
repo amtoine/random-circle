@@ -55,10 +55,10 @@ def plot_circle(
     plt.plot(x, y, c=color, linewidth=width)
 
 
-def main(*, distribution: Distribution):
+def main(*, distribution: Distribution, n: int):
     plt.style.use("dark_background")
 
-    plot_distribution(distribution)
+    plot_distribution(distribution, n=n)
     plot_circle()
 
     plt.axis([-1.1, 1.1, -1.1, 1.1])
@@ -79,7 +79,14 @@ if __name__ == "__main__":
         default=default,
         help=f"the distribution to use (defaults to '{default}').",
     )
+    parser.add_argument(
+        "--nb-points",
+        "-n",
+        type=int,
+        default=3141,
+        help="the number of points to sample and plot (defaults to 3141).",
+    )
 
     args = parser.parse_args()
 
-    main(distribution=DISTRIBUTIONS[args.distribution])
+    main(distribution=DISTRIBUTIONS[args.distribution], n=args.nb_points)
